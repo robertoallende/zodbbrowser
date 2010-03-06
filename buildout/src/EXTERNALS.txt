@@ -1,0 +1,2 @@
+# Apply this file: svn propset svn:externals -F EXTERNALS.txt .
+http://zodbbrowser.googlecode.com/svn/zope2.zodbbrowser/trunk/ zope2.zodbbrowser
