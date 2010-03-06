@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<metal:page define-macro="master">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Zope2.zodbbrowser 
+    </title>
+    <link rel="stylesheet" href="++resource++zodbbrowser/zodbbrowser.css" type="text/css" >
+	<style type="text/css" media="screen">
+
+</style>
+</head>
+<body>
+
+<div id="container">
+
+    <div id="top-panel">
+    <tal:providers replace="structure provider:zodbbrowser.Leftbar" />
+    <!-- tal:providers replace="structure provider:zodbbrowser.middle" -->
+    <!-- tal:providers replace="structure provider:zodbbrowser.right" -->
+    </div>
+
+    <div id="right-panel">
+    &nbsp; <!-- metal:bodytext metal:define-slot="top-local" tal:content="nothing" / -->
+    </div>
+
+    <!-- tal:providers replace="structure provider:zodbbrowser.Footer" -->
+
+
+</div>
+</body>
+</html>
+</metal:page>

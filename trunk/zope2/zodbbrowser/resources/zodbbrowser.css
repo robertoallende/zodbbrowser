@@ -1,0 +1,28 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande",Verdana,Lucida,Helvetica,Arial,sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+
+a:link { border: none; color: #000 ; text-decoration: none; }
+a:visited { border: none; color: #000 ; text-decoration: none;}
+a:active { border: none; color: #000 ; text-decoration: none;}
+a:hover { border: none; color:#000 ; text-decoration: none; }
+img { border: none;}		
+
+#left-panel
+{
+	float: left;
+	width: 34%;
+	margin-left: 5px;
+	padding-top: 3px;
+    font-size: 12px;
+}
+
+#left-panel ul {
+    margin: 0px;
+    list-style: none;
+}

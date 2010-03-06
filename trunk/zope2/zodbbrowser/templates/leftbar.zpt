@@ -1,0 +1,5 @@
+<div id="left-panel">
+    <ul tal:repeat="ob view/list_objects">
+        <li tal:content="ob"/>
+    </ul>
+</div>
