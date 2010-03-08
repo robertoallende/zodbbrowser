@@ -33,4 +33,41 @@
     directory="resources"
    /> 
 
+<!-- xmltree navigation -->
+  <browser:page
+      for="*"
+      name="navigation_macros"
+      permission="zope2.View"
+      template="templates/navigation_macros.zpt"
+      />
+
+  <browser:pages
+      for="zope.app.container.interfaces.IReadContainer"
+      permission="zope2.View"
+      class=".xmlobject.ReadContainerXmlObjectView">
+    <browser:page
+        name="children.xml"
+        attribute="children"
+        />
+    <browser:page
+        name="singleBranchTree.xml"
+        attribute="singleBranchTree"
+        />         
+  </browser:pages>
+
+  <browser:page
+      name="singleBranchTree.xml"
+      for="zope.interface.interface.Interface"
+      permission="zope2.View"
+      class=".xmlobject.XmlObjectView"
+      attribute="singleBranchTree"
+      />  
+
+   <browser:page
+    for="*"
+    name="navigation"
+    template="templates/navigation_macros.zpt"
+    permission="zope2.View"
+  />
+
 </configure>

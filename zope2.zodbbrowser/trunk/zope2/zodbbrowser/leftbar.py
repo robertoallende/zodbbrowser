@@ -17,7 +17,7 @@ class LeftbarViewlet(BrowserView):
 
     def list_objects(self):
         context = self.context
-        return context.keys()
+        return context.getChildNodes()
 
     def giveme_pdb(self):
         import pdb ; pdb.set_trace()

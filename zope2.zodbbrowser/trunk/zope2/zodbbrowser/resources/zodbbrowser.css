@@ -17,7 +17,7 @@ img { border: none;}
 {
 	float: left;
 	width: 34%;
-	margin-left: 5px;
+	margin-left: 0px;
 	padding-top: 3px;
     font-size: 12px;
 }
@@ -25,4 +25,11 @@ img { border: none;}
 #left-panel ul {
     margin: 0px;
     list-style: none;
+}
+
+#navtreecontents expand {
+    background-repeat:no-repeat;
+    cursor:pointer;
+    display:inline;
+    padding-left:14px;
 }
