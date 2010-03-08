@@ -12,15 +12,13 @@
     <link rel="stylesheet" href="++resource++zodbbrowser/zodbbrowser.css" type="text/css" >
 	<style type="text/css" media="screen">
     </style>
-	<metal:tree use-macro="context/navigation_macros/navigation_tree_js" />
+    <metal:tree use-macro="context/navigation_macros/navigation_tree_js" />        
 </head>
 <body tal:attributes="onload body_onload | nothing">
 
 <div id="container">
     <div id="top-panel"> 
     <metal:tree use-macro="context/navigation_macros/navigation_tree_box" />
-    <tal:providers replace="structure provider:zodbbrowser.Leftbar" />
-    <!-- metal:tree use-macro="context/@@navigation/navigation_tree_box" -->
     <!-- tal:providers replace="structure provider:zodbbrowser.middle" -->
     <!-- tal:providers replace="structure provider:zodbbrowser.right" -->
     </div>

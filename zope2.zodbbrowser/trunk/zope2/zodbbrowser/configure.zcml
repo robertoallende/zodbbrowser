@@ -12,35 +12,12 @@
     permission="zope2.View"
   />
 
-  <browser:viewletManager
-      name="zodbbrowser.Leftbar"
-      provides=".interfaces.ILeftbar"
-      permission="zope2.View"
-   />
-
-   <browser:viewlet
-      name="leftbar"
-      for="*"
-      manager=".interfaces.ILeftbar"
-      template="templates/leftbar.zpt"
-      class=".leftbar.LeftbarViewlet"
-      permission="zope2.View"
-     />
-
-
   <browser:resourceDirectory
     name="zodbbrowser"
     directory="resources"
    /> 
 
 <!-- xmltree navigation -->
-  <browser:page
-      for="*"
-      name="navigation_macros"
-      permission="zope2.View"
-      template="templates/navigation_macros.zpt"
-      />
-
   <browser:pages
       for="zope.app.container.interfaces.IReadContainer"
       permission="zope2.View"
@@ -63,11 +40,11 @@
       attribute="singleBranchTree"
       />  
 
-   <browser:page
-    for="*"
-    name="navigation"
-    template="templates/navigation_macros.zpt"
-    permission="zope2.View"
-  />
+ <browser:page
+      for="*"
+      name="navigation_macros"
+      permission="zope2.View"
+      template="templates/navigation_macros.zpt"
+      /> 
 
 </configure>
