@@ -19,8 +19,9 @@
 
   <browser:page
     for="*"
+    class=".tree.Tree"
+    attribute="context_tree"
     name="tree"
-    class=".zodbbrowser.Tree"
     permission="zope2.View"
   />
 
