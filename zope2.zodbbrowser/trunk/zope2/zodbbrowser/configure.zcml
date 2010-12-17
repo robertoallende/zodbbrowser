@@ -1,0 +1,34 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <five:registerPackage package="." initialize=".zope2.initialize" />
+
+  <browser:page
+    for="*"
+    name="zodbbrowser"
+    template="templates/main_template.zpt"
+    permission="zope2.View"
+  />
+
+  <browser:resourceDirectory
+    name="zodbbrowser"
+    directory="resources"
+   /> 
+
+  <browser:page
+    for="*"
+    name="contents"
+    template="templates/contents.zpt"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    name="tree"
+    class=".zodbbrowser.Tree"
+    permission="zope2.View"
+  />
+
+</configure>

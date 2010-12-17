@@ -1,0 +1,2 @@
+<tal:block define="_dummy python:request.response.setHeader('content-type','text/javascript;;charset=utf-8')" />
+<div tal:replace="structure view/context_tree" />
