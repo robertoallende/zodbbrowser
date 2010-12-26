@@ -24,22 +24,23 @@ var emptyMiddle = function(){
     $("#middle").text("");
     };
 
-var middle = function(){
+var middle = function(path){
     $("#middle").dynatree({
           initAjax: {
-              url: "/list_kind",
+              url: path + "/list_kind",
               data: { mode: "funnyMode" },
               dataType: "json"
               },
       onActivate: function(node) {
         switch (node.data.title) {
-            case "Properties" : right('properties') ;  break;
-            case "Callables" : right('callables') ; break;
-            case "Properties and Callables" : right('properties_and_callables') ; break;
-            case "Interfaces Provided" : right('properties') ; break;
-            case "Adapts" : right('properties') ; break;
+            case "Properties" : right(path + '/properties') ;  break;
+            case "Callables" : right(path + '/callables') ; break;
+            case "Properties and Callables" : right(path + 'properties_and_callables');
+                  break;
+            case "Interfaces Provided" : right(path + '/properties') ; break;
+            case "Adapts" : right(path + '/properties') ; break;
         }
-        // XXX this makes a request twice 
+        // XXX this forces a request twice sometimes
         var rightTree = $("#right").dynatree("getTree");
         rightTree.reload();
       },
@@ -68,7 +69,8 @@ var getPath = function(node) {
               dataType: "json"
               },
       onActivate: function(node) {
-        middle();
+        middle(getPath(node));
+        // XXX this forces a request twice sometimes
         var rightTree = $("#middle").dynatree("getTree");
         rightTree.reload();
       },
