@@ -8,7 +8,7 @@ class Tree(BrowserView):
     """
 
     def context_tree(self):
-        content_tree  =  [ build_tree(self.context, 2) ] 
+        content_tree  =  [ build_tree(self.context, 3) ] 
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
 
 """Helpers methods"""
