@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<metal:page define-macro="master">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+
+    <!-- latest jQuery direct from google's CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" src="++resource++zodbbrowser/jquery.jstree.js"></script>
+
+    <script type="text/javascript" src="++resource++zodbbrowser/myjs.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="++resource++zodbbrowser/style.css" />
+
+		<style type="text/css" id="page-css">
+			/* Styles specific to this particular page */
+			#tree
+			{
+				width: 30%;
+				height: 200px;
+				overflow: auto;
+			}
+		</style>
+</head>
+
+<body> 
+
+<!-- p tal:content='python:view.root_list()' / -->
+<div id="container">
+    <div id="tree">   
+    </div>
+</div>
+
+</body>
+</html>
+</metal:page>
+
+<!-- Todo: 
+1. proporciones de los paneles. Fijar el ancho en % y el alto de acuerdo a la resolucion.
+2. 
+-->
