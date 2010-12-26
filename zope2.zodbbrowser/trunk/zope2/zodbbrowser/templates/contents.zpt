@@ -20,12 +20,36 @@
 
     <style type="text/css" id="page-css">
             /* Styles specific to this particular page */
-            #tree
+            #left, #middle, #right, #bottom
             {
-                /* width: 30%;
-                height: 200px;
-                overflow: auto; */
+                overflow: auto;             
+                padding: 0;
+                margin: 0;
+                border-style:solid;
+                border-width: 0px;
+                border-color: #BBB9C2;
+                float: left;
             }
+
+            #left {
+                border-width: 1px;                
+                width: 33%;
+                height: 300px;
+            }
+
+            #middle, #right {
+                border-width: 1px 1px 1px 0px;                
+                width: 33%;
+                height: 300px;
+                margin-right: -1.5px;
+            }
+
+            #bottom {
+                border-width: 0px 1px 1px;
+                width: 99%;
+                height: 280px;
+            }
+
         </style>
 
 </head>
@@ -34,7 +58,19 @@
 
 <!-- p tal:content='python:view.root_list()' / -->
 <div id="container">
-    <div id="tree">   
+    <div id="left">   
+    </div>
+
+     <div id="middle">
+        &nbsp;   
+    </div>
+
+     <div id="right">   
+        &nbsp;
+    </div>
+
+    <div id="bottom">   
+        &nbsp;
     </div>
 </div>
 

@@ -27,9 +27,41 @@
 
   <browser:page
     for="*"
-    class=".tree.Tree"
+    class=".left.Tree"
     attribute="context_tree"
     name="tree"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".middle.Kind"
+    attribute="list"
+    name="list_kind"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="properties"
+    name="properties"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="callables"
+    name="callables"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="properties_and_callables"
+    name="properties_and_callables"
     permission="zope2.View"
   />
 

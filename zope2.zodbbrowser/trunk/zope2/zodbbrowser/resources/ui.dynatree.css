@@ -6,12 +6,11 @@ ul.dynatree-container
 	font-family: tahoma, arial, helvetica;
 	font-size: 10pt; /* font size should not be too big */
 	white-space: nowrap;
-	padding: 3px;
-
+	padding: 0px 0 3px 3px;
+	margin: 0;
 	background-color: white;
-	border: 1px dotted gray;
-
 	overflow: auto;
+
 }
 
 ul.dynatree-container ul
@@ -346,6 +345,7 @@ span.dynatree-drag-helper-img
 }
 div.dynatree-drag-helper /*.dynatree-drop-accept*/
 {
+
 /*    border-color: green;
 	background-color: red;*/
 }

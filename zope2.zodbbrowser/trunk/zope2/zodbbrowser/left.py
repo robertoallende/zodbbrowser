@@ -1,6 +1,5 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
-
 import json
 
 class Tree(BrowserView):
@@ -40,8 +39,8 @@ def build_tree(elem, level = 1024, remove_root = 0):
                 node["key"] = get_id(elem)
                 node["isFolder"] = True
 
-            if len(lista) and not len(node["children"]):
-                node["isLazy"] = True
+                if not len(node["children"]):
+                    node["isLazy"] = True
 
             node["children"] = children
 
