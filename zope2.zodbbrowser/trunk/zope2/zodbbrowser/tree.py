@@ -8,7 +8,7 @@ class Tree(BrowserView):
     """
 
     def context_tree(self):
-        content_tree  =  [ build_tree(self.context, 3) ] 
+        content_tree  =  [ build_tree(self.context ) ] 
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
 
 """Helpers methods"""
@@ -22,11 +22,17 @@ def build_tree(elem, level = 1024):
         lista = elem.objectValues()
         node = {}
 
-        node["data"] = get_id(elem)
+        node["title"] = get_id(elem)
         node["children"] = []
 
+        if len(lista):
+            node["key"] = get_id(elem)
+            node["isFolder"] = True
+
         for i in lista:
-            node["children"].append(build_tree(i, level))
+            result = (build_tree(i, level))
+            if result:
+                node["children"].append(result)
 
         return node 
 

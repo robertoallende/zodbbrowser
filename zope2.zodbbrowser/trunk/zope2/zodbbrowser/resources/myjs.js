@@ -1,16 +1,16 @@
-$(function () {
-	$("#tree").jstree({ 
-		"json_data" : {
-			"ajax" : { "url" : "tree",
-                       "dataType" : "json",
-                       "async" : true, 
-                       "data" : (function() { console.log('hola'); })
-                   },
-            "progressive_render" : true,
-            "error": this.onError,
-            "success": this.onSuccess
-		},
-		"plugins" : [ "themes", "json_data" ]
-	});
-});
-
+  $(function(){
+    $("#tree").dynatree({
+      // In real life we would call a URL on the server like this:
+          initAjax: {
+              url: "/tree",
+              data: { mode: "funnyMode" },
+              dataType: "json"
+              },
+      onActivate: function(node) {
+        $("#echoActive").text(node.data.title);
+      },
+      onDeactivate: function(node) {
+        $("#echoActive").text("-");
+      }
+    });
+  });
