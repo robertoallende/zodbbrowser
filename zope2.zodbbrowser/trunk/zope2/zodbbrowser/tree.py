@@ -7,14 +7,18 @@ class Tree(BrowserView):
     """Contents tree
     """
 
-    # XXX: It should show just 2 levels, not more.
-
     def context_tree(self):
-        content_tree  =  [ build_tree(self.context) ] 
+        content_tree  =  [ build_tree(self.context, 2) ] 
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
 
 """Helpers methods"""
-def build_tree(elem):
+def build_tree(elem, level = 1024):
+        """Levels represents how deep is the tree
+        """
+        if level <= 0:
+            return None
+        level -= 1
+
         lista = elem.objectValues()
         node = {}
 
@@ -22,7 +26,7 @@ def build_tree(elem):
         node["children"] = []
 
         for i in lista:
-            node["children"].append(build_tree(i))
+            node["children"].append(build_tree(i, level))
 
         return node 
 

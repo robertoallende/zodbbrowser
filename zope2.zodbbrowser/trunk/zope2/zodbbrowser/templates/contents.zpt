@@ -12,7 +12,6 @@
     </script>
 
     <script type="text/javascript" src="++resource++zodbbrowser/jquery.jstree.js"></script>
-    <script type="text/javascript" src="++resource++zodbbrowser/jquery.jstree.min.js"></script>
 
     <script type="text/javascript" src="++resource++zodbbrowser/myjs.js"></script>
 
