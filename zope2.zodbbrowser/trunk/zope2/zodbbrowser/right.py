@@ -53,3 +53,36 @@ class Elements(BrowserView):
     def adapts(self):
         """ 
         """
+
+    def class_ancestors(self):
+        """
+        """
+        content_tree = build_class_tree(self.context.__class__)
+        return json.dumps(content_tree, ensure_ascii= True, indent=4)
+
+def build_class_tree(elem, level = 1024):        
+    if level <= 0 or elem == object:
+        return None
+    level -= 1
+
+    myclass = elem
+    myclassbase = myclass.__bases__
+    node = {}
+    children = []
+
+    for i in myclassbase:
+        result = build_class_tree(i, level)
+        if result:
+            children.append(result)
+
+    node["title"] = myclass.__name__
+        
+    if len(children):
+        node["children"] = children
+        node["key"] = myclass.__name__
+        node["isFolder"] = True
+        #node["isLazy"] = True
+
+    return node 
+
+

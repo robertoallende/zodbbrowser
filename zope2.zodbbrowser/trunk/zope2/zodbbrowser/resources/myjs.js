@@ -1,17 +1,33 @@
+// bottom panel 
+var emptyBottom = function(){
+    $("#bottom").text("");
+    };
+
+var bottom = function(nodepath) {
+    $.ajax({
+          url: nodepath + "/" + elem + "/get_source"  ,
+          success: function(data) {
+            $('#bottom').html(data);
+            console.log('Load was performed.');
+           }
+     });
+};
+
 // right panel 
 var emptyRight = function(){
     $("#right").text("");
     };
 
-var right = function(kind){
+var right = function(nodepath, kind){
     $("#right").dynatree({
           initAjax: {
-              url: kind,
+              url: nodepath + kind,
               data: { mode: "funnyMode" },
               dataType: "json"
               },
       onActivate: function(node) {
-        // console.log('Right: ' + kind);
+        elem = node.data.title;
+        bottom(nodepath, elem);
       },
       onDeactivate: function(node) {
         // console.log("-");
@@ -33,22 +49,21 @@ var middle = function(path){
               },
       onActivate: function(node) {
         switch (node.data.title) {
-            case "Properties" : right(path + '/properties') ;  break;
-            case "Callables" : right(path + '/callables') ; break;
-            case "Properties and Callables" : right(path + 'properties_and_callables');
+            case "Properties" : right(path, '/properties') ;  break;
+            case "Callables" : right(path, '/callables') ; break;
+            case "Properties and Callables" : right(path, 'properties_and_callables');
                   break;
-            case "Interfaces Provided" : right(path + '/properties') ; break;
-            case "Adapts" : right(path + '/properties') ; break;
+            case "Interfaces Provided" : right(path, '/properties') ; break;
+            case "Adapts" : right(path, '/properties') ; break;
+            case "Class and Ancestors" : right(path, '/class_ancestors') ; break;
         }
         // XXX this forces a request twice sometimes
         var rightTree = $("#right").dynatree("getTree");
         rightTree.reload();
       },
-      onPostInit: function(isReloading, isError) {
-         this.reactivate();
-      },
       onDeactivate: function(node) {
         emptyRight();
+        emptyBottom();
       }
     });
   };
@@ -75,8 +90,9 @@ var getPath = function(node) {
         rightTree.reload();
       },
       onDeactivate: function(node) {
-        $("#right").text("");
-        $("#middle").text("");
+        emptyRight();
+        emptyMiddle();
+        emptyBottom();
       },
       onLazyRead: function(node){
                 node.appendAjax({

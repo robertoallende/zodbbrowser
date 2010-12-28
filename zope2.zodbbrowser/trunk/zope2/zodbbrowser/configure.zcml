@@ -65,4 +65,21 @@
     permission="zope2.View"
   />
 
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_source"
+    name="get_source"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="class_ancestors"
+    name="class_ancestors"
+    permission="zope2.View"
+  />
+
+
 </configure>
