@@ -3,12 +3,13 @@ var emptyBottom = function(){
     $("#bottom").text("");
     };
 
-var bottom = function(nodepath) {
+var bottom = function(nodepath, panelpath, nodename) {
     $.ajax({
-          url: nodepath + "/" + elem + "/get_source"  ,
+          url: nodepath + "/class_source?" + nodename,
           success: function(data) {
             $('#bottom').html(data);
             console.log('Load was performed.');
+            console.log(panelpath);
            }
      });
 };
@@ -27,7 +28,7 @@ var right = function(nodepath, kind){
               },
       onActivate: function(node) {
         elem = node.data.title;
-        bottom(nodepath, elem);
+        bottom(nodepath, getPath(node), node.data.title);
       },
       onDeactivate: function(node) {
         // console.log("-");

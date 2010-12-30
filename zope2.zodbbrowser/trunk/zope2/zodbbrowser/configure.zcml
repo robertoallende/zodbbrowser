@@ -81,5 +81,14 @@
     permission="zope2.View"
   />
 
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_class"
+    name="class_source"
+    permission="zope2.View"
+  />
+
+
 
 </configure>

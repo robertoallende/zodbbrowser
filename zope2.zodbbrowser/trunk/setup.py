@@ -24,6 +24,7 @@ setup(name='zope2.zodbbrowser',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'pygments',
       ],
       entry_points="""
       # -*- Entry points: -*-
