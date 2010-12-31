@@ -3,9 +3,9 @@ var emptyBottom = function(){
     $("#bottom").text("");
     };
 
-var bottom = function(nodepath, panelpath, nodename) {
+var bottom = function(nodepath, panelpath, nodename, kindof) {
     $.ajax({
-          url: nodepath + "/class_source?" + nodename,
+          url: nodepath + kindof + nodename,
           success: function(data) {
             $('#bottom').html(data);
             console.log('Load was performed.');
@@ -28,7 +28,12 @@ var right = function(nodepath, kind){
               },
       onActivate: function(node) {
         elem = node.data.title;
-        bottom(nodepath, getPath(node), node.data.title);
+        switch (kind) {
+            case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); break;
+            case "/properties" : bottom(nodepath, getPath(node), node.data.title, "/property?"); break;
+            case "/callables" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
+            case "/interfaces" : bottom(nodepath, getPath(node), node.data.title, "/interfaces?"); break;
+        }
       },
       onDeactivate: function(node) {
         // console.log("-");
@@ -52,10 +57,8 @@ var middle = function(path){
         switch (node.data.title) {
             case "Properties" : right(path, '/properties') ;  break;
             case "Callables" : right(path, '/callables') ; break;
-            case "Properties and Callables" : right(path, 'properties_and_callables');
-                  break;
-            case "Interfaces Provided" : right(path, '/properties') ; break;
-            case "Adapts" : right(path, '/properties') ; break;
+            case "Interfaces Provided" : right(path, '/interfaces') ; break;
+            case "Adapts" : right(path, '/adapts') ; break;
             case "Class and Ancestors" : right(path, '/class_ancestors') ; break;
         }
         // XXX this forces a request twice sometimes

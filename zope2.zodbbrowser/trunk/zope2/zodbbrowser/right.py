@@ -1,8 +1,8 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
 import json
-
 error = "ERROR "
+from zope.interface import providedBy
 
 class Elements(BrowserView):
     """For every object we clasify its kind of properties.
@@ -42,10 +42,13 @@ class Elements(BrowserView):
         """
         return json.dumps( self.lista(1) , ensure_ascii= True, indent=4)
 
-    def interfaces_provided(self):
+    def interfaces(self):
         """ 
         """
-
+            
+        myobj = self.context
+        return providedBy(myobj)
+ 
     def interfaces_not_provided(self):
         """ 
         """

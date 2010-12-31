@@ -13,25 +13,35 @@ a:active { border: none; color: #000 ; text-decoration: none;}
 a:hover { border: none; color:#000 ; text-decoration: none; }
 img { border: none;}		
 
-#left-panel
+/* Styles specific to this particular page */
+#left, #middle, #right, #bottom
 {
-	float: left;
-	width: 34%;
-	margin-left: 0px;
-	padding-top: 3px;
-    font-size: 12px;
+                overflow: auto;             
+                padding: 0;
+                margin: 0;
+                border-style:solid;
+                border-width: 0px;
+                border-color: #BBB9C2;
+                float: left;
 }
 
-#left-panel ul {
-    margin: 0px;
-    list-style: none;
+#left {
+                border-width: 1px;                
+                width: 33%;
+                height: 300px;
 }
 
-#navtreecontents expand {
-    background-repeat:no-repeat;
-    cursor:pointer;
-    display:inline;
-    padding-left:14px;
+#middle, #right {
+                border-width: 1px 1px 1px 0px;                
+                width: 32.5%;
+                height: 300px;
+                padding: 0 0 0 0.5%;
 }
 
+#bottom {
+                border-width: 0px 1px 1px;
+                width: 98%;
+                height: 280px;
+                padding: 0 0 0 1%;
+}
 

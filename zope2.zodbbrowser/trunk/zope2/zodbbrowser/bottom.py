@@ -2,6 +2,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
 import json
 import inspect 
+from zope.interface import providedBy
 
 try: 
     from pygments import highlight
@@ -30,6 +31,29 @@ class Source(BrowserView):
         # XXX: if the are a monkey patch i wont know about it
         return source
 
+    def get_method(self):
+        """ 
+        """    
+        myclass = self.context.__class__
+
+        try: 
+            mymethod_name = self.request['QUERY_STRING'].split('/')[0]
+        except: 
+            return ''
+
+
+        try:
+            code = inspect.getsource(getattr( myclass, mymethod_name))
+            source = highlight(code, PythonLexer(), HtmlFormatter())
+ 
+        except TypeError:
+            source = '<pre>' + inspect.getsource(getattr( myclass, mymethod_name)) + '</pre>'
+        except NameError:
+            source = inspect.getsource(getattr( myclass, mymethod_name))
+        except:
+            source = "" 
+
+        return source
 
     def get_class(self):
         """ 
@@ -58,8 +82,7 @@ class Source(BrowserView):
 
         # XXX: if the are a monkey patch i wont know about it
         return source
-
-
+    
 def get_ancestors(c, ancestors = {}):
      ancestors[c.__name__] = c
      for i in c.__bases__:
