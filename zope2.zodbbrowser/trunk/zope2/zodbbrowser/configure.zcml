@@ -19,20 +19,11 @@
 
   <browser:page
     for="*"
-    name="sample-data1.json"
-    template="templates/sample-data1.zpt"
-    permission="zope2.View"
-  />
-
-
-  <browser:page
-    for="*"
     class=".left.Tree"
     attribute="context_tree"
     name="tree"
     permission="zope2.View"
   />
-
 
   <browser:page
     for="*"
