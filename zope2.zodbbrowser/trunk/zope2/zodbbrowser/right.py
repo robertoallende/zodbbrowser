@@ -43,11 +43,16 @@ class Elements(BrowserView):
         return json.dumps( self.lista(1) , ensure_ascii= True, indent=4)
 
     def interfaces(self):
-        """ 
+        """ return interfaces provided by current context 
         """
-            
         myobj = self.context
-        return providedBy(myobj)
+        myinterfaces = tuple(providedBy(self.context))
+        result = [ ]   
+
+        for i in myinterfaces:
+            result.append({"title": i.__name__ })
+
+        return json.dumps( result , ensure_ascii= True, indent=4) 
  
     def interfaces_not_provided(self):
         """ 

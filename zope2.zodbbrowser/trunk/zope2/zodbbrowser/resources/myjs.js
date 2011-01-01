@@ -8,8 +8,6 @@ var bottom = function(nodepath, panelpath, nodename, kindof) {
           url: nodepath + kindof + nodename,
           success: function(data) {
             $('#bottom').html(data);
-            console.log('Load was performed.');
-            console.log(panelpath);
            }
      });
 };
@@ -32,11 +30,8 @@ var right = function(nodepath, kind){
             case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); break;
             case "/properties" : bottom(nodepath, getPath(node), node.data.title, "/property?"); break;
             case "/callables" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
-            case "/interfaces" : bottom(nodepath, getPath(node), node.data.title, "/interfaces?"); break;
+            case "/interfaces" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); break;
         }
-      },
-      onDeactivate: function(node) {
-        // console.log("-");
       }
     });
   };
@@ -48,11 +43,20 @@ var emptyMiddle = function(){
 
 var middle = function(path){
     $("#middle").dynatree({
-          initAjax: {
-              url: path + "/list_kind",
-              data: { mode: "funnyMode" },
-              dataType: "json"
-              },
+              children: [
+                        {
+                            "title": "Class and Ancestors"
+                        }, 
+                        {
+                            "title": "Properties"
+                        }, 
+                        {
+                            "title": "Callables"
+                        }, 
+                        {
+                            "title": "Interfaces Provided"
+                        }
+                    ] ,
       onActivate: function(node) {
         switch (node.data.title) {
             case "Properties" : right(path, '/properties') ;  break;
@@ -74,10 +78,16 @@ var middle = function(path){
 
 
 // Just for the left: getPath builds the path traversing the tree
-var getPath = function(node) {
-    if (node.data.title) { return ( getPath(node.parent) + "/" + node.data.title) ; }
+var buildTree = function(node) {
+    if (node.data.title) { return ( buildTree(node.parent) + "/" + node.data.title) ; }
     else { return "" ; }
 };
+
+var getPath = function(node) {
+    var mypath = buildTree(node);
+    return mypath.slice(12);
+};
+
 
 // left panel
   $(function(){
@@ -88,7 +98,8 @@ var getPath = function(node) {
               dataType: "json"
               },
       onActivate: function(node) {
-        middle(getPath(node));
+        var mypath = getPath(node);
+        middle(mypath);
         // XXX this forces a request twice sometimes
         var rightTree = $("#middle").dynatree("getTree");
         rightTree.reload();

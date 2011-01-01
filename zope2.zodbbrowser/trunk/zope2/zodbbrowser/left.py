@@ -7,7 +7,11 @@ class Tree(BrowserView):
     """
 
     def context_tree(self):
-        content_tree  =  build_tree(self.context, 2, 1) 
+        if self.context.__name__ == 'Zope' and self.context.__class__.__name__ == 'Application':
+            content_tree  =  build_tree(self.context, 2) 
+        else:
+            content_tree  =  build_tree(self.context, 2, 1)
+    
         if type(content_tree) == dict:
             content_tree  =  [ content_tree ] 
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
@@ -53,6 +57,6 @@ def get_id(elem):
             result =  elem.id 
 
         if not result:
-            result = "Root"
+            result = "Application"
 
         return result

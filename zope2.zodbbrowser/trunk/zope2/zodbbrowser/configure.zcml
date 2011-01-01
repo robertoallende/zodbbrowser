@@ -33,13 +33,6 @@
     permission="zope2.View"
   />
 
-  <browser:page
-    for="*"
-    class=".middle.Kind"
-    attribute="list"
-    name="list_kind"
-    permission="zope2.View"
-  />
 
   <browser:page
     for="*"
@@ -98,6 +91,16 @@
     name="class_source"
     permission="zope2.View"
   />
+
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_interface"
+    name="interface_source"
+    permission="zope2.View"
+  />
+
 
   <browser:page
     for="*"

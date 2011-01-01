@@ -82,6 +82,40 @@ class Source(BrowserView):
 
         # XXX: if the are a monkey patch i wont know about it
         return source
+
+    def get_interface(self):
+        """ 
+        """ 
+
+        try: 
+            myinterface_name = self.request['QUERY_STRING'].split('/')[0]
+        except: 
+            return ''
+
+        interfacesdict = {}
+        get_interfaces( tuple(providedBy(self.context))  , interfacesdict)
+
+        myiclass = interfacesdict[myinterface_name]
+         
+        try:
+            code = inspect.getsource(myiclass) 
+            source = highlight(code, PythonLexer(), HtmlFormatter())
+ 
+        except TypeError:
+            source = '<pre>' + inspect.getsource(myiclass) + '</pre>'
+        except NameError:
+            source = inspect.getsource(myiclass)
+        except:
+            source = "" 
+
+        return source
+
+        # XXX: if the are a monkey patch i wont know about it
+
+def get_interfaces(c, interfaces):
+    for i in c:
+        interfaces[i.__name__] = i
+    
     
 def get_ancestors(c, ancestors = {}):
      ancestors[c.__name__] = c
