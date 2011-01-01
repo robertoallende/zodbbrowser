@@ -31,13 +31,13 @@ img { border: none;}
 #left {
                 border-width: 1px;                
                 width: 33%;
-                height: 300px;
+                height: 280px;
 }
 
 #middle, #right {
                 border-width: 1px 1px 1px 0px;                
                 width: 32.4%;
-                height: 300px;
+                height: 280px;
                 padding: 0 0 0 0.5%;
 }
 
@@ -48,3 +48,8 @@ img { border: none;}
                 padding: 0 0 0 1%;
 }
 
+#poweredby {
+    float: right; 
+    margin-right: 1%; 
+    font-size: 0.7em;
+}

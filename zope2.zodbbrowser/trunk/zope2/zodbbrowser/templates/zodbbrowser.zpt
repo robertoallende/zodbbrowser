@@ -26,7 +26,17 @@
 <body> 
 
 <!-- p tal:content='python:view.root_list()' / -->
+<a href="http://zope2.zope.org/" target="_blank">
+<img src="++resource++zodbbrowser/zodblogo.png" alt="zodbbrowser" />
+</a>
+
+<div id="poweredby">
+<a href="http://menttes.com" target="_blank">Powered by menttes</a>
+</div>
+
 <div id="container">
+    
+    
     <div id="left">   
     </div>
 

@@ -12,8 +12,8 @@
 
   <browser:page
     for="*"
-    name="contents"
-    template="templates/contents.zpt"
+    name="zodbbrowser"
+    template="templates/zodbbrowser.zpt"
     permission="zope2.View"
   />
 
