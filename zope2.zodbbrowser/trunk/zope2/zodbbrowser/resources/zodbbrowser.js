@@ -28,7 +28,7 @@ var right = function(nodepath, kind){
         elem = node.data.title;
         switch (kind) {
             case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); break;
-            case "/properties" : bottom(nodepath, getPath(node), node.data.title, "/property?"); break;
+            case "/properties" : bottom(nodepath, getPath(node), node.data.title, "/property_source?"); break;
             case "/callables" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
             case "/interfaces" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); break;
         }

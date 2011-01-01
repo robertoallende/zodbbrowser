@@ -41,11 +41,9 @@ class Source(BrowserView):
         except: 
             return ''
 
-
         try:
             code = inspect.getsource(getattr( myclass, mymethod_name))
             source = highlight(code, PythonLexer(), HtmlFormatter())
- 
         except TypeError:
             source = '<pre>' + inspect.getsource(getattr( myclass, mymethod_name)) + '</pre>'
         except NameError:
@@ -112,10 +110,24 @@ class Source(BrowserView):
 
         # XXX: if the are a monkey patch i wont know about it
 
+
+    def get_property(self):
+        """ return context class with property remarked
+        """
+        try:
+            prop = getattr(self.context, self.request['QUERY_STRING'].split('/')[0])
+            result = '<div class="highlight"><pre><span class="nf">Type:</span> '
+            result += str(type(prop)).replace(">","").replace("<","")
+            result += '<br/><span class="nf">Value:</span> '
+            result += str(prop)
+            result += '</pre></div>'
+        except:
+            result = ''
+        return result 
+
 def get_interfaces(c, interfaces):
     for i in c:
         interfaces[i.__name__] = i
-    
     
 def get_ancestors(c, ancestors = {}):
      ancestors[c.__name__] = c

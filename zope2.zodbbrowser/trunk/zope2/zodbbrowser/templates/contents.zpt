@@ -19,7 +19,7 @@
     <link href="++resource++zodbbrowser/sourcecode.css" rel="stylesheet" type="text/css">
     <script src="++resource++zodbbrowser/jquery.dynatree.js" type="text/javascript"></script>
 
-    <script type="text/javascript" src="++resource++zodbbrowser/myjs.js"></script>
+    <script type="text/javascript" src="++resource++zodbbrowser/zodbbrowser.js"></script>
 
 </head>
 

@@ -110,4 +110,12 @@
     permission="zope2.View"
   />
 
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_property"
+    name="property_source"
+    permission="zope2.View"
+  />
+
 </configure>
