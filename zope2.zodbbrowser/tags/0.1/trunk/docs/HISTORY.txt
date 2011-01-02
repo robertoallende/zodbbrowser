@@ -1,0 +1,9 @@
+Changelog
+=========
+
+0.1 experimental version 
+------------------------
+
+- Initial release includes: Class and Ancestors, Properties, Callables and Interfaces provided.
+- Support for Zope 2.13.x
+- Support for Firefox 3.6 and Chrome 5.0. No support Internet Explorer yet.

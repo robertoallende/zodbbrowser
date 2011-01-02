@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<metal:page define-macro="master">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+
+    <!-- latest jQuery direct from google's CDN -->
+
+    <script src="++resource++zodbbrowser/jquery.js" type="text/javascript"></script>
+    <script src="++resource++zodbbrowser/jquery-ui.custom.js" type="text/javascript"></script>
+    <script src="++resource++zodbbrowser/jquery.cookie.js" type="text/javascript"></script>
+
+
+    <link href="++resource++zodbbrowser/zodbbrowser.css" rel="stylesheet" type="text/css">
+    <link href="++resource++zodbbrowser/ui.dynatree.css" rel="stylesheet" type="text/css">
+    <link href="++resource++zodbbrowser/sourcecode.css" rel="stylesheet" type="text/css">
+    <script src="++resource++zodbbrowser/jquery.dynatree.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="++resource++zodbbrowser/zodbbrowser.js"></script>
+
+</head>
+
+<body> 
+
+<!-- p tal:content='python:view.root_list()' / -->
+<a href="http://code.google.com/p/zodbbrowser" target="_blank">
+<img src="++resource++zodbbrowser/zodblogo.png" alt="zodbbrowser" />
+</a>
+
+<div id="poweredby">
+<a href="http://menttes.com" target="_blank">Powered by menttes</a>
+</div>
+
+<div id="container">
+    
+    
+    <div id="left">   
+    </div>
+
+     <div id="middle">
+        &nbsp;   
+    </div>
+
+     <div id="right">   
+        &nbsp;
+    </div>
+
+    <div id="bottom">  
+        &nbsp;
+    </div>
+
+</div>
+
+</body>
+</html>
+</metal:page>
+
+<!-- Todo: 
+1. proporciones de los paneles. Fijar el ancho en % y el alto de acuerdo a la resolucion.
+2. 
+-->
