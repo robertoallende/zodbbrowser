@@ -1,0 +1,112 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+  <five:registerPackage package="." initialize=".zope2.initialize" />
+
+  <browser:resourceDirectory
+    name="zodbbrowser"
+    directory="resources"
+   /> 
+
+  <browser:page
+    for="*"
+    name="zodbbrowser"
+    template="templates/zodbbrowser.zpt"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".left.Tree"
+    attribute="context_tree"
+    name="tree"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="properties"
+    name="properties"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="callables"
+    name="callables"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="properties_and_callables"
+    name="properties_and_callables"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="interfaces"
+    name="interfaces"
+    permission="zope2.View"
+  />
+
+
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_source"
+    name="get_source"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
+    attribute="class_ancestors"
+    name="class_ancestors"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_class"
+    name="class_source"
+    permission="zope2.View"
+  />
+
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_interface"
+    name="interface_source"
+    permission="zope2.View"
+  />
+
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_method"
+    name="method_source"
+    permission="zope2.View"
+  />
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_property"
+    name="property_source"
+    permission="zope2.View"
+  />
+
+</configure>
