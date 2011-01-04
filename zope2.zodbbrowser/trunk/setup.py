@@ -27,6 +27,7 @@ setup(name='zope2.zodbbrowser',
           'pygments',
       ],
       entry_points="""
-      # -*- Entry points: -*-
-      """,
+        [z3c.autoinclude.plugin]
+        target = my_base
+        """
       )
