@@ -57,16 +57,6 @@
     permission="zope2.View"
   />
 
-
-
-  <browser:page
-    for="*"
-    class=".bottom.Source"
-    attribute="get_source"
-    name="get_source"
-    permission="zope2.View"
-  />
-
   <browser:page
     for="*"
     class=".right.Elements"
@@ -108,5 +98,14 @@
     name="property_source"
     permission="zope2.View"
   />
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="pdb"
+    name="pdb"
+    permission="zope2.View"
+  />
+
 
 </configure>

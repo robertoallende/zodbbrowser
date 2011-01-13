@@ -15,21 +15,10 @@ except:
 class Source(BrowserView):
     """
     """
-
-    def get_source(self):
-        try:
-            code = inspect.getsource(self.context.__class__) 
-            source = highlight(code, PythonLexer(), HtmlFormatter())
- 
-        except TypeError:
-            source = '<pre>' + inspect.getsource(self.context.__class__) + '</pre>'
-        except NameError:
-            source = inspect.getsource(self.context.__class__)
-        except:
-            source = "Error"
-
-        # XXX: if the are a monkey patch i wont know about it
-        return source
+    
+    def pdb(self):
+        import pdb
+        pdb.set_trace()
 
     def get_method(self):
         """ 
@@ -51,10 +40,12 @@ class Source(BrowserView):
         except:
             source = "" 
 
-        return source
+        status = 'Reading ' + inspect.getsourcefile(myclass) 
+        result = { 'status': status,  'bottom': source}
+        return json.dumps(result, ensure_ascii= True, indent=4)
 
     def get_class(self):
-        """ 
+        """ XXX: if the are a monkey patch i wont know about it
         """ 
         myclass = self.context.__class__
         ancestors = {}
@@ -68,6 +59,7 @@ class Source(BrowserView):
         mysupclass = ancestors[mysupclass_name]
          
         try:
+            code = '### Reading' + inspect.getsourcefile(mysupclass) 
             code = inspect.getsource(mysupclass ) 
             source = highlight(code, PythonLexer(), HtmlFormatter())
  
@@ -78,8 +70,9 @@ class Source(BrowserView):
         except:
             source = "" 
 
-        # XXX: if the are a monkey patch i wont know about it
-        return source
+        status = 'Reading ' + inspect.getsourcefile(mysupclass) 
+        result = { 'status': status,  'bottom': source}
+        return json.dumps(result, ensure_ascii= True, indent=4)
 
     def get_interface(self):
         """ 
@@ -106,24 +99,28 @@ class Source(BrowserView):
         except:
             source = "" 
 
-        return source
-
-        # XXX: if the are a monkey patch i wont know about it
-
+        status = 'Reading ' + inspect.getsourcefile(myiclass) 
+        result = { 'status': status,  'bottom': source}
+        return json.dumps(result, ensure_ascii= True, indent=4)
+        
 
     def get_property(self):
-        """ return context class with property remarked
+        """ Return property type and current value
         """
         try:
             prop = getattr(self.context, self.request['QUERY_STRING'].split('/')[0])
-            result = '<div class="highlight"><pre><span class="nf">Type:</span> '
-            result += str(type(prop)).replace(">","").replace("<","")
-            result += '<br/><span class="nf">Value:</span> '
-            result += str(prop)
-            result += '</pre></div>'
+            source = '<div class="highlight"><pre><span class="nf">Type:</span> '
+            source += str(type(prop)).replace(">","").replace("<","")
+            source += '<br/><span class="nf">Value:</span> '
+            source += str(prop)
+            source += '</pre></div>'
         except:
-            result = ''
-        return result 
+            source = ''
+
+        status = '' 
+        result = { 'status': status,  'bottom': source}
+        return json.dumps(result, ensure_ascii= True, indent=4)
+
 
 def get_interfaces(c, interfaces):
     for i in c:
@@ -133,3 +130,4 @@ def get_ancestors(c, ancestors = {}):
      ancestors[c.__name__] = c
      for i in c.__bases__:
         get_ancestors(i, ancestors)
+

@@ -17,7 +17,7 @@ a:hover { border: none; color:#000 ; text-decoration: none; }
 img { border: none;}		
 
 /* Styles specific to this particular page */
-#left, #middle, #right, #bottom
+#left, #middle, #right, #bottom, #status
 {
                 overflow: auto;             
                 padding: 0;
@@ -44,8 +44,18 @@ img { border: none;}
 #bottom {
                 border-width: 0px 1px 1px;
                 width: 98%;
-                height: 280px;
+                height: 250px;
                 padding: 0 0 0 1%;
+}
+
+#status {
+                border-width: 0px 1px 1px;
+                width: 98%;
+                height: 15px;
+                font-size: 10px;
+                padding: 0 0 0 1%;
+                background: #e3e3e3;
+                color: #7A7A7A;
 }
 
 #poweredby {

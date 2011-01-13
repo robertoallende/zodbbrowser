@@ -57,10 +57,15 @@ class Elements(BrowserView):
     def interfaces_not_provided(self):
         """ 
         """
-
+        
+        
     def adapts(self):
         """ 
         """
+        from zope.component import getGlobalSiteManager
+        sm = getGlobalSiteManager()
+        aa = [i for i in sm.registeredAdapters()]
+        
 
     def class_ancestors(self):
         """

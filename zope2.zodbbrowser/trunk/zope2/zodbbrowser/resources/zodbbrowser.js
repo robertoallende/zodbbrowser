@@ -1,13 +1,16 @@
 // bottom panel 
 var emptyBottom = function(){
     $("#bottom").text("");
+    $("#status").text("");
     };
 
 var bottom = function(nodepath, panelpath, nodename, kindof) {
     $.ajax({
           url: nodepath + kindof + nodename,
+          dataType: "json",
           success: function(data) {
-            $('#bottom').html(data);
+            $('#bottom').html(data['bottom']);
+            $('#status').html(data['status']);
            }
      });
 };
