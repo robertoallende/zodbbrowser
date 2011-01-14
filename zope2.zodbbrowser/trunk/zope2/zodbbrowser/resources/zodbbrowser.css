@@ -58,6 +58,10 @@ img { border: none;}
                 color: #7A7A7A;
 }
 
+#highlight {
+    width: 100%;
+}
+
 #poweredby {
     float: right; 
     margin-right: 1%; 

@@ -3,6 +3,7 @@ from Products.Five.browser import BrowserView
 import json
 import inspect 
 from zope.interface import providedBy
+from pprint import pformat
 
 try: 
     from pygments import highlight
@@ -109,15 +110,16 @@ class Source(BrowserView):
         """
         try:
             prop = getattr(self.context, self.request['QUERY_STRING'].split('/')[0])
-            source = '<div class="highlight"><pre><span class="nf">Type:</span> '
-            source += str(type(prop)).replace(">","").replace("<","")
-            source += '<br/><span class="nf">Value:</span> '
-            source += str(prop)
-            source += '</pre></div>'
+            status = 'Type: ' + str(type(prop)).replace(">","").replace("<","")
+            code = pformat(prop)
+            source = highlight(code, PythonLexer(), HtmlFormatter())
+        except TypeError:
+            source = '<pre>' + str(prop) + '</pre>'
+        except NameError:
+            source = str(prop)
         except:
-            source = ''
+            source = "" 
 
-        status = '' 
         result = { 'status': status,  'bottom': source}
         return json.dumps(result, ensure_ascii= True, indent=4)
 
