@@ -1,8 +1,13 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
-import json
-error = "ERROR "
 from zope.interface import providedBy
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
+
+error = "ERROR "
 
 class Elements(BrowserView):
     """For every object we clasify its kind of properties.

@@ -1,9 +1,13 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Five.browser import BrowserView
-import json
 import inspect 
 from zope.interface import providedBy
 from pprint import pformat
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 try: 
     from pygments import highlight
