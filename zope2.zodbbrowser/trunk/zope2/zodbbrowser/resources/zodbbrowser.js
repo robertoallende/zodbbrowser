@@ -10,7 +10,7 @@ var bottom = function(nodepath, panelpath, nodename, kindof) {
           dataType: "json",
           success: function(data) {
             $('#bottom').html(data['bottom']);
-            $('#status').html(data['status']);
+            $('#status').html("# " + data['status']);
            }
      });
 };
@@ -122,5 +122,20 @@ var getPath = function(node) {
       }
     });
   });
+
+// Panels using jQuery UI.Layout 
+
+	var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
+
+	$(document).ready(function () {
+		myLayout = $('body').layout({
+            east__size : 433,
+            west__size : 433,
+            north__size : 50,
+            south__size : 450
+        });
+
+
+ 	});
 
 
