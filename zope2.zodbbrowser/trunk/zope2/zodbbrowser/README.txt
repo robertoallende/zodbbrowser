@@ -1,14 +1,4 @@
 zope2.zodbbrowser Package Readme
 =========================
 
-Overview
---------
-
-A zodb browser for Zope2
-
-
-Your tests here
----------------
-
-    >>> 1 + 1
-    3
+See http://pypi.python.org/pypi?name=zope2.zodbbrowser

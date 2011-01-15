@@ -21,10 +21,6 @@ class Source(BrowserView):
     """
     """
     
-    def pdb(self):
-        import pdb
-        pdb.set_trace()
-
     def get_method(self):
         """ 
         """    

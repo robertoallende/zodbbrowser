@@ -99,13 +99,4 @@
     permission="zope2.View"
   />
 
-  <browser:page
-    for="*"
-    class=".bottom.Source"
-    attribute="pdb"
-    name="pdb"
-    permission="zope2.View"
-  />
-
-
 </configure>

@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.2 experimental version 
+------------------------
+
+- Added ui.layout for better layout and resizable panels. Thanks to Quimera.
+- Updated jquery from 1.4.2 to 1.4.4. 
+- Added Pretty printing format to show propertie's values. Thanks to Laurence Rowe and Emanuel Sartor. 
+- Added support for older pythons 2.4 , 2.5. Thanks to Laurence Rowe.
+- Included module and file path for source code. Thanks to davidjb.
+- Added z3c.autoinclude.plugin support to remove the zcml entry on buildout. Thanks to aclark. 
+
 0.1 experimental version 
 ------------------------
 
