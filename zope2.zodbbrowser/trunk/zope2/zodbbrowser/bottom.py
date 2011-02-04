@@ -1,5 +1,4 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.browser import BrowserView
+from zope2.zodbbrowser.utils import DoomedBrowserView
 import inspect 
 from zope.interface import providedBy
 from pprint import pformat
@@ -17,7 +16,7 @@ except:
     print 'no pygments'    
 
 
-class Source(BrowserView):
+class Source(DoomedBrowserView):
     """
     """
     
