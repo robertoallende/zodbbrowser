@@ -1,5 +1,4 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.browser import BrowserView
+from zope2.zodbbrowser.utils import DoomedBrowserView
 from zope.interface import providedBy
 
 try:
@@ -9,7 +8,7 @@ except ImportError:
 
 error = "ERROR "
 
-class Elements(BrowserView):
+class Elements(DoomedBrowserView):
     """For every object we clasify its kind of properties.
     """
 
@@ -50,7 +49,6 @@ class Elements(BrowserView):
     def interfaces(self):
         """ return interfaces provided by current context 
         """
-        myobj = self.context
         myinterfaces = tuple(providedBy(self.context))
         result = [ ]   
 

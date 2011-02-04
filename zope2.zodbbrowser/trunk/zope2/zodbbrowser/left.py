@@ -1,12 +1,10 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.Five.browser import BrowserView
+from zope2.zodbbrowser.utils import DoomedBrowserView
 try:
     import json
 except ImportError:
     import simplejson as json
 
-
-class Tree(BrowserView):
+class Tree(DoomedBrowserView):
     """Contents tree
     """
 
