@@ -11,6 +11,7 @@ var bottom = function(nodepath, panelpath, nodename, kindof) {
           success: function(data) {
             $('#bottom').html(data['bottom']);
             $('#status').html("# " + data['status']);
+            myLayout.sizePane('south', 450);
            }
      });
 };
@@ -18,28 +19,32 @@ var bottom = function(nodepath, panelpath, nodename, kindof) {
 // right panel 
 var emptyRight = function(){
     $("#right").text("");
-    };
+};
 
 var right = function(nodepath, kind){
     $("#right").dynatree({
-          initAjax: {
-              url: nodepath + kind,
-              data: { mode: "all" },
-              dataType: "json"
-              },
+      initAjax: {
+          url: nodepath + kind,
+          data: { mode: "all" },
+          dataType: "json"
+          },
       onActivate: function(node) {
         elem = node.data.title;
         switch (kind) {
-            case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); break;
-            case "/properties-please" : bottom(nodepath, getPath(node), node.data.title, "/property_source?"); break;
-            case "/callables-please" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
-            case "/interfaces-please" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); break;
+            case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); 
+                break;
+            case "/properties-please" : bottom(nodepath, getPath(node), node.data.title, "/property_source?"); 
+                break;
+            case "/callables-please" : bottom(nodepath, getPath(node), node.data.title, "/method_source?");         
+                break;
+            case "/interfaces-please" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); 
+                break;
         }
       }
     });
   };
 
-// midle panel 
+// middle panel 
 var emptyMiddle = function(){
     $("#middle").text("");
     };
@@ -92,15 +97,22 @@ var getPath = function(node) {
 };
 
 
+function getSmartFilterSetting(){
+    if (window.location.href.indexOf('smart_filter=disabled') > 0){
+        return 'disabled';
+    }
+    return '';
+}
+
 // left panel
   $(function(){
     $("#left").dynatree({
       initAjax: {
           url: "/tree",
-          data: { mode: "all" },
+          data: { mode: "all" , smart_filter:getSmartFilterSetting()},
       },
       ajaxDefaults: {
-        cache: false, // false: Append random '_' argument to the request url to prevent caching.
+        cache: false, // for debug: Append random '_' argument to the request url to prevent caching.
         dataType: "json"
       },
       onActivate: function(node) {
@@ -119,7 +131,8 @@ var getPath = function(node) {
                 node.appendAjax({
                 url: function() { return getPath(node) + "/tree"; }(),
                 data: {key: node.data.key,
-                       mode: "all"
+                       mode: "all",
+                       smart_filter:getSmartFilterSetting()
                        }
               });
       }
@@ -128,15 +141,16 @@ var getPath = function(node) {
 
 // Panels using jQuery UI.Layout 
 
-	var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
+var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
 
-	$(document).ready(function () {
-		
-		myLayout = $('body').layout({
-            applyDefaultStyles: true,
-        });
+$(document).ready(function () {	
+	myLayout = $('body').layout({
+        applyDefaultStyles: true,
+    });
 
+    myLayout.sizePane('east', 350);
+    myLayout.sizePane('west', 500);
+});
 
- 	});
 
 

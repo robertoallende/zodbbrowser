@@ -17,8 +17,6 @@
     <link href="++resource++dynatree/ui.dynatree.css" rel="stylesheet" type="text/css">
     <link href="++resource++zodbbrowser/sourcecode.css" rel="stylesheet" type="text/css">
 
-    
-
 </head>
 <body>
 
@@ -30,7 +28,16 @@
     </a>
 
     <div id="poweredby">
-    <a href="http://menttes.com" target="_blank">Powered by menttes</a>
+        <a href="http://menttes.com" target="_blank">Powered by menttes</a>
+    </div>
+    
+    <div id="smart-filter">
+        Switch to: <span tal:condition="not:request/smart_filter|nothing">
+            <a href="?smart_filter=disabled">Advanced View</a>
+        </span>
+         <span tal:condition="request/smart_filter|nothing">
+            <a href="/zodbbrowser">Simple View</a>
+        </span>
     </div>
 
 </div>
