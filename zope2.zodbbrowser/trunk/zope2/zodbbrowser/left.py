@@ -16,22 +16,36 @@ class Tree(DoomedBrowserView):
     
         if type(content_tree) == dict:
             content_tree  =  [ content_tree ] 
+        
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
 
 """Helpers methods"""
-def build_tree(elem, level = 1024, remove_root = 0):
-        """Levels represents how deep is the tree
+def build_tree(elem, level = 1024, remove_root = 0, smart_filter=False):
+        """Levels represents how deep the tree is
         """
         if level <= 0:
             return None
         level -= 1
-
+        
+        ignore = getIgnorableObjects()
+        
         lista = elem.objectValues()
+        
         node = {}
         children = []
-
+        result = None
         for i in lista:
+            try: # i.id can throw exception on broken interfaces
+                iid = str(i.id)
+            except TypeError:
+                continue
+            
+            if smart_filter and (iid in ignore or iid.count('portal_')):        
+                continue 
+       
             result = (build_tree(i, level))
+
+                        
             if result:
                 children.append(result)
 
@@ -62,3 +76,29 @@ def get_id(elem):
             result = "Application"
 
         return result
+        
+def getIgnorableObjects():
+    # plone specific items to ignore
+    return [    'Control_Panel', 
+                'temp_folder',
+                'session_data_manager',
+                'browser_id_manager',
+                'error_log',
+                'standard_error_message',
+                'virtual_hosting',
+                'acl_users',
+                'portal_setup',
+                'MailHost',
+                'caching_policy_manager',
+                'content_type_registry',
+                'plone_utils',
+                'plone_actionicons',
+                'translation_service',
+                'mimetypes_registry',
+                'archetype_tool',
+                'reference_catalog',
+                'uid_catalog',
+                'HTTPCache',
+                'RAMCache',
+                'ResourceRegistryCache',
+             ]

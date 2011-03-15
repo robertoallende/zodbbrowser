@@ -24,7 +24,7 @@ var right = function(nodepath, kind){
     $("#right").dynatree({
           initAjax: {
               url: nodepath + kind,
-              data: { mode: "funnyMode" },
+              data: { mode: "all" },
               dataType: "json"
               },
       onActivate: function(node) {
@@ -95,11 +95,14 @@ var getPath = function(node) {
 // left panel
   $(function(){
     $("#left").dynatree({
-          initAjax: {
-              url: "/tree",
-              data: { mode: "funnyMode" },
-              dataType: "json"
-              },
+      initAjax: {
+          url: "/tree",
+          data: { mode: "all" },
+      },
+      ajaxDefaults: {
+        cache: false, // false: Append random '_' argument to the request url to prevent caching.
+        dataType: "json"
+      },
       onActivate: function(node) {
         var mypath = getPath(node);
         middle(mypath);
@@ -116,7 +119,7 @@ var getPath = function(node) {
                 node.appendAjax({
                 url: function() { return getPath(node) + "/tree"; }(),
                 data: {key: node.data.key,
-                       mode: "funnyMode"
+                       mode: "all"
                        }
               });
       }
@@ -128,11 +131,9 @@ var getPath = function(node) {
 	var myLayout; // a var is required because this page utilizes: myLayout.allowOverflow() method
 
 	$(document).ready(function () {
+		
 		myLayout = $('body').layout({
-            east__size : 433,
-            west__size : 433,
-            north__size : 50,
-            south__size : 450
+            applyDefaultStyles: true,
         });
 
 
