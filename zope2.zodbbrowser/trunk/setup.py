@@ -11,6 +11,9 @@ setup(name='zope2.zodbbrowser',
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Programming Language :: Python",
+        "Framework :: Zope2",
+        "Framework :: ZODB",
+        "Framework :: Plone",
         ],
       keywords='zope2 zope zodb python',
       author='Roberto Allende - Menttes SRL',
@@ -28,6 +31,6 @@ setup(name='zope2.zodbbrowser',
       ],
       entry_points="""
         [z3c.autoinclude.plugin]
-        target = my_base
+        target = plone
         """
       )
