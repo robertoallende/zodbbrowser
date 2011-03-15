@@ -4,6 +4,16 @@ Changelog
 0.3 (unreleased)
 ----------------
 
+- Rename views to not conflict with certain built in items [eleddy]
+
+- Render sites with broken interfaces [eleddy]
+
+- Bumped the jquery dynatree version, fixed missing dependencies for jq 
+  libs [eleddy]
+  
+- Fix setup.py so that autoinclude works with plone without zcml
+  [eleddy]
+
 - Make all browser views extend DoomedBrowserView, which makes sure the utility
   can't accidentally commit a transaction.
   [davisagli]

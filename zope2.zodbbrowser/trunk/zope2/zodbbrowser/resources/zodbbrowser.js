@@ -31,9 +31,9 @@ var right = function(nodepath, kind){
         elem = node.data.title;
         switch (kind) {
             case "/class_ancestors" : bottom(nodepath, getPath(node), node.data.title, "/class_source?"); break;
-            case "/properties" : bottom(nodepath, getPath(node), node.data.title, "/property_source?"); break;
-            case "/callables" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
-            case "/interfaces" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); break;
+            case "/properties-please" : bottom(nodepath, getPath(node), node.data.title, "/property_source?"); break;
+            case "/callables-please" : bottom(nodepath, getPath(node), node.data.title, "/method_source?"); break;
+            case "/interfaces-please" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); break;
         }
       }
     });
@@ -62,9 +62,9 @@ var middle = function(path){
                     ] ,
       onActivate: function(node) {
         switch (node.data.title) {
-            case "Properties" : right(path, '/properties') ;  break;
-            case "Callables" : right(path, '/callables') ; break;
-            case "Interfaces Provided" : right(path, '/interfaces') ; break;
+            case "Properties" : right(path, '/properties-please') ;  break;
+            case "Callables" : right(path, '/callables-please') ; break;
+            case "Interfaces Provided" : right(path, '/interfaces-please') ; break;
             case "Adapts" : right(path, '/adapts') ; break;
             case "Class and Ancestors" : right(path, '/class_ancestors') ; break;
         }

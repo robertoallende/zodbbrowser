@@ -1,4 +1,4 @@
 
         [z3c.autoinclude.plugin]
-        target = my_base
+        target = plone
         
