@@ -17,7 +17,7 @@
     for="*"
     name="zodbbrowser"
     template="templates/zodbbrowser.zpt"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -25,7 +25,7 @@
     class=".left.Tree"
     attribute="context_tree"
     name="tree"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -33,7 +33,7 @@
     class=".right.Elements"
     attribute="properties"
     name="properties-please"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -41,7 +41,7 @@
     class=".right.Elements"
     attribute="callables"
     name="callables-please"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -49,7 +49,7 @@
     class=".right.Elements"
     attribute="properties_and_callables"
     name="properties_and_callables"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -57,7 +57,7 @@
     class=".right.Elements"
     attribute="interfaces"
     name="interfaces-please"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -65,7 +65,7 @@
     class=".right.Elements"
     attribute="class_ancestors"
     name="class_ancestors"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -73,7 +73,7 @@
     class=".bottom.Source"
     attribute="get_class"
     name="class_source"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
 
@@ -82,7 +82,7 @@
     class=".bottom.Source"
     attribute="get_interface"
     name="interface_source"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
 
@@ -91,7 +91,7 @@
     class=".bottom.Source"
     attribute="get_method"
     name="method_source"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
   <browser:page
@@ -99,7 +99,7 @@
     class=".bottom.Source"
     attribute="get_property"
     name="property_source"
-    permission="zope2.View"
+    permission="zope2.ViewManagementScreens"
   />
 
 </configure>

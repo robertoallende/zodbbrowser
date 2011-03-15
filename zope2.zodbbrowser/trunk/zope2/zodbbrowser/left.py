@@ -4,15 +4,18 @@ try:
 except ImportError:
     import simplejson as json
 
+
 class Tree(DoomedBrowserView):
     """Contents tree
     """
 
     def context_tree(self):
+        smart_filter = self.context.REQUEST.get('smart_filter', None) != 'disabled' and True or False
+        
         if self.context.__name__ == 'Zope' and self.context.__class__.__name__ == 'Application':
-            content_tree  =  build_tree(self.context, 2) 
+            content_tree  =  build_tree(self.context, 2, smart_filter=smart_filter) 
         else:
-            content_tree  =  build_tree(self.context, 2, 1)
+            content_tree  =  build_tree(self.context, 2, 1, smart_filter=smart_filter)
     
         if type(content_tree) == dict:
             content_tree  =  [ content_tree ] 
@@ -20,14 +23,14 @@ class Tree(DoomedBrowserView):
         return json.dumps(content_tree, ensure_ascii= True, indent=4)
 
 """Helpers methods"""
-def build_tree(elem, level = 1024, remove_root = 0, smart_filter=False):
+def build_tree(elem, level = 1024, remove_root = 0, smart_filter=True):
         """Levels represents how deep the tree is
         """
         if level <= 0:
             return None
         level -= 1
         
-        ignore = getIgnorableObjects()
+        filterThese = getIgnorableObjects()
         
         lista = elem.objectValues()
         
@@ -40,7 +43,7 @@ def build_tree(elem, level = 1024, remove_root = 0, smart_filter=False):
             except TypeError:
                 continue
             
-            if smart_filter and (iid in ignore or iid.count('portal_')):        
+            if smart_filter and (iid in filterThese or iid.count('portal_')):        
                 continue 
        
             result = (build_tree(i, level))

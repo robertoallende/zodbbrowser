@@ -3,6 +3,10 @@ Changelog
 
 0.3 (unreleased)
 ----------------
+- Switch from View to ViewManagementScreens Permissions [eleddy]
+
+- Added alternate view that starts to filter out objects that are unlikely 
+  to be navigated [eleddy]
 
 - Rename views to not conflict with certain built in items [eleddy]
 

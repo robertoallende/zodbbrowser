@@ -64,3 +64,12 @@ img { border: none;}
     margin-right: 1%; 
     font-size: 0.7em;
 }
+
+#smart-filter{
+    clear:left;
+    font-size: .8em;
+}
+
+#smart-filter a{
+    color: blue;
+}
