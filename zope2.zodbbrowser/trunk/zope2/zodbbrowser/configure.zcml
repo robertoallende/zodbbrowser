@@ -55,6 +55,14 @@
   <browser:page
     for="*"
     class=".right.Elements"
+    attribute="annotations"
+    name="annotations"
+    permission="zope2.ViewManagementScreens"
+  />
+
+  <browser:page
+    for="*"
+    class=".right.Elements"
     attribute="interfaces"
     name="interfaces-please"
     permission="zope2.ViewManagementScreens"
@@ -65,6 +73,14 @@
     class=".right.Elements"
     attribute="class_ancestors"
     name="class_ancestors"
+    permission="zope2.ViewManagementScreens"
+  />
+
+  <browser:page
+    for="*"
+    class=".bottom.Source"
+    attribute="get_annotation"
+    name="annotation_value"
     permission="zope2.ViewManagementScreens"
   />
 

@@ -2,6 +2,7 @@ from zope2.zodbbrowser.utils import DoomedBrowserView
 import inspect 
 from zope.interface import providedBy
 from pprint import pformat
+from zope.annotation import IAnnotations
 
 try:
     import json
@@ -122,6 +123,15 @@ class Source(DoomedBrowserView):
         result = { 'status': status,  'bottom': source}
         return json.dumps(result, ensure_ascii= True, indent=4)
 
+    def get_annotation(self):
+        """ returns an annotation value
+        """
+        atuple = self.context, self.request['QUERY_STRING'].split('/')[0]
+        val = IAnnotations(atuple[0])[atuple[1]]
+        value = highlight( str(val) , PythonLexer(), HtmlFormatter())
+
+        result = { 'status': str(type(val)),  'bottom': value }
+        return json.dumps(result, ensure_ascii= True, indent=4)
 
 def get_interfaces(c, interfaces):
     for i in c:

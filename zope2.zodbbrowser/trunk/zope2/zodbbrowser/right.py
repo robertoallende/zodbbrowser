@@ -1,5 +1,6 @@
 from zope2.zodbbrowser.utils import DoomedBrowserView
 from zope.interface import providedBy
+from zope.annotation import IAnnotations
 
 try:
     import json
@@ -60,7 +61,19 @@ class Elements(DoomedBrowserView):
     def interfaces_not_provided(self):
         """ 
         """
+
+    def annotations(self):        
+        """
+        """
+        try:
+            ann = IAnnotations(self.context)
+        except:
+            ann = ''
+        result = []
+        for i in ann:
+            result.append({"title": i})
         
+        return json.dumps( result , ensure_ascii= True, indent=4) 
         
     def adapts(self):
         """ 
