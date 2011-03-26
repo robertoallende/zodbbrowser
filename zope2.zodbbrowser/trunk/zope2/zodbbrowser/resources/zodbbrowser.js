@@ -11,7 +11,7 @@ var bottom = function(nodepath, panelpath, nodename, kindof) {
           success: function(data) {
             $('#bottom').html(data['bottom']);
             $('#status').html("# " + data['status']);
-            myLayout.sizePane('south', 450);
+
            }
      });
 };
@@ -39,6 +39,8 @@ var right = function(nodepath, kind){
                 break;
             case "/interfaces-please" : bottom(nodepath, getPath(node), node.data.title, "/interface_source?"); 
                 break;
+            case "/annotations" : bottom(nodepath, getPath(node), node.data.title, "/annotation_value?"); 
+                break;
         }
       }
     });
@@ -63,6 +65,9 @@ var middle = function(path){
                         }, 
                         {
                             "title": "Interfaces Provided"
+                        },
+                        {
+                            "title": "Annotations"
                         }
                     ] ,
       onActivate: function(node) {
@@ -72,6 +77,7 @@ var middle = function(path){
             case "Interfaces Provided" : right(path, '/interfaces-please') ; break;
             case "Adapts" : right(path, '/adapts') ; break;
             case "Class and Ancestors" : right(path, '/class_ancestors') ; break;
+            case "Annotations" : right(path, '/annotations') ; break;
         }
         // XXX this forces a request twice sometimes
         var rightTree = $("#right").dynatree("getTree");
