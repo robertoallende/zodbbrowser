@@ -1,7 +1,7 @@
-Zope2.ZodbBrowser is a web application to browse, inspect and introspect Zope's zodb objects. 
+Collective.ZodbBrowser is a web application to browse, inspect and introspect Zope's zodb objects. 
 
 ## Watch
-[http://www.youtube.com/v/GkOpdnC5zvs Zodbbrowser Demo]
+[Zodbbrowser Demo]: http://www.youtube.com/v/GkOpdnC5zvs
 
 ## Features 
 
@@ -77,6 +77,6 @@ http://localhost:8080/zodbbrowser
 
 ##Related Projects
 
- * [http://svn.zope.org/z3c.zodbbrowser/trunk/ z3c.zodbbrowser uses gtk] 
+ * [z3c.zodbbrowser uses gtk]: http://svn.zope.org/z3c.zodbbrowser/trunk/ 
 
- * [https://launchpad.net/zodbbrowser zodbbrowser uses Zope 3.4] 
+ * [zodbbrowser uses Zope 3.4]: https://launchpad.net/zodbbrowser
