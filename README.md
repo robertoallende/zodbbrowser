@@ -1,7 +1,7 @@
 Collective.ZodbBrowser is a web application to browse, inspect and introspect Zope's zodb objects. 
 
 ## Watch
-[Zodbbrowser Demo](http://www.youtube.com/v/GkOpdnC5zvs)
+<a href='http://www.youtube.com/watch?feature=player_embedded&v=GkOpdnC5zvs' target='_blank'><img src='http://img.youtube.com/vi/GkOpdnC5zvs/0.jpg' width='425' height=344 /></a>
 
 ## Features 
 
